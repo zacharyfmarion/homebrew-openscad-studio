@@ -16,10 +16,12 @@ cask "openscad-studio" do
 
   app "OpenSCAD Studio.app"
 
-  # Explicitly remove quarantine attribute to bypass Gatekeeper for unsigned app
+  # Explicitly remove quarantine attribute to bypass Gatekeeper for unsigned apps
   postflight do
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/OpenSCAD Studio.app"]
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/OpenSCAD.app"]
   end
 
   zap trash: [
