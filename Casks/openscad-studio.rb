@@ -1,9 +1,9 @@
 cask "openscad-studio" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "0.5.0"
-  sha256 arm:   "2accf6da8a725c1449c0d330f7cc5d385a1848b37ff6aea8a38f59fc68339019",
-         intel: "d2bbdbbb64c991c3d6fa7125c9153848a4e16715de1cd579018a3dd9dea6a41d"
+  version "0.5.1"
+  sha256 arm:   "eb7625e057f43f67a29f8e18e7ab07928f84329420551d52876ad70b5681d240",
+         intel: "889c8dd0eda0f7c032d462fbd557cfd1a605706a4124a5c37ca010c5a9a4d3c1"
 
   url "https://github.com/zacharyfmarion/openscad-studio/releases/download/v#{version}/OpenSCAD.Studio_#{version}_#{arch}.dmg",
       verified: "github.com/zacharyfmarion/"
@@ -15,17 +15,6 @@ cask "openscad-studio" do
   depends_on cask: "openscad"
 
   app "OpenSCAD Studio.app"
-
-  # Explicitly remove quarantine attribute to bypass Gatekeeper for unsigned apps
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/OpenSCAD Studio.app"]
-    # OpenSCAD installs with versioned names like OpenSCAD-2021.01.app
-    Dir.glob("#{appdir}/OpenSCAD*.app").each do |openscad_app|
-      system_command "/usr/bin/xattr",
-                     args: ["-cr", openscad_app]
-    end
-  end
 
   zap trash: [
     "~/Library/Application Support/com.openscad.studio",
