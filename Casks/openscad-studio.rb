@@ -20,8 +20,11 @@ cask "openscad-studio" do
   postflight do
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/OpenSCAD Studio.app"]
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/OpenSCAD.app"]
+    # OpenSCAD installs with versioned names like OpenSCAD-2021.01.app
+    Dir.glob("#{appdir}/OpenSCAD*.app").each do |openscad_app|
+      system_command "/usr/bin/xattr",
+                     args: ["-cr", openscad_app]
+    end
   end
 
   zap trash: [
