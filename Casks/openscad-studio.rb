@@ -1,9 +1,9 @@
 cask "openscad-studio" do
   arch arm: "aarch64", intel: "x64"
 
-  version "1.2.2"
-  sha256 arm:   "4d829263883c851c5ca38a2561b8a0b98cbeaed33b8bcd8104e3d464afe3fbf7",
-         intel: "4f1966b79c6b06ef7ae6fcf7bf530b65c718182690d9ae3fe4b4430ab6f2b1f2"
+  version "1.3.0"
+  sha256 arm:   "26baacda638caa2f87478e4ce3e8819fc10a5d466c1a2a983204abaf8f03a826",
+         intel: "450b7bd0c940d4256eee5e8351c83d3551e8012c161da1b7baf03b843e257720"
 
   url "https://github.com/zacharyfmarion/openscad-studio/releases/download/v#{version}/OpenSCAD.Studio_#{version}_#{arch}.dmg",
       verified: "github.com/zacharyfmarion/"
